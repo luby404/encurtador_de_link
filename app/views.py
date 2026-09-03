@@ -14,8 +14,8 @@ api = APIRouter(
 )
 
 @api.get("/{id}")
-async def get_redirect_url(id:str):
-    return redirecionar_usuario(id)
+async def get_redirect_url(request:Request, id:str):
+    return redirecionar_usuario(request, id)
 
 @api.post("/")
 async def create_new_link(request:Request, url:NewUrl):
