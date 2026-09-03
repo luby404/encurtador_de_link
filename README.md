@@ -31,7 +31,7 @@ Estrutura do projeto (resumida):
 
 Requisitos
 - Python 3.10+ (recomendado)
-- Dependências listadas em `pyproject.toml` (use `poetry install` ou instale manualmente com `pip`)
+- Dependências listadas em `pyproject.toml` (use `uv sync` ou instale manualmente com `pip`)
 
 Instalação rápida
 
@@ -48,6 +48,12 @@ source .venv/bin/activate
 poetry install
 ```
 
+3. Instale dependências com uv
+
+```bash
+uv sync
+```
+
 Ou instale com pip caso não use Poetry (se houver `requirements.txt`):
 
 ```bash
@@ -59,13 +65,14 @@ Executando localmente
 - Inicie o servidor (verifique `app/core/server.py` para detalhes de execução e variáveis de ambiente):
 
 ```bash
-python -m app.core.server
+fastapi run app --reload
 ```
 
-- O servidor expõe endpoints para criar um link encurtado e para redirecionamento. Ajuste a porta/host conforme o código em `app/core/server.py`.
+- O servidor expõe endpoints para criar um link encurtado e para redirecionamento. Ajuste a porta/host 
 
-Banco de dados
-- O projeto já contém um arquivo SQLite `banco.db` para desenvolvimento local. A inicialização do esquema é feita em `app/core/schema.py` / `app/core/database.py`.
+## Banco de dados
+s
+- O projeto já criara um arquivo SQLite `banco.db` para desenvolvimento local.  pode configurar um PostgreSql ou outro banco suportado pelo orm peewee em `app/core/database.py`. 
 
 Exemplos de uso (genéricos)
 
