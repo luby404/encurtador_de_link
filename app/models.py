@@ -9,6 +9,8 @@ class Url(Model):
     is_ative = orm.BooleanField(default=True)
     user     = orm.ForeignKeyField(User, backref="urls", null=True)
 
+    clicks   = orm.IntegerField(default=-1)
+
 class UrlAnalytic(Model):
     url  = orm.ForeignKeyField(Url, backref="url_analytics")
     user = orm.ForeignKeyField(User, backref="urls", null=True)
