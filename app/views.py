@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 
 
 from .contollers import (
@@ -18,8 +18,8 @@ async def get_redirect_url(id:str):
     return redirecionar_usuario(id)
 
 @api.post("/")
-async def create_new_link(url:NewUrl):
-    return encurtar_url(url)
+async def create_new_link(request:Request, url:NewUrl):
+    return encurtar_url(request, url)
 
 
 @api.get("/analitc/<id>")
