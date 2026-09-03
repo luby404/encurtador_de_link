@@ -1,24 +1,28 @@
 from fastapi import APIRouter
-from fastapi.responses import RedirectResponse
+
+
+from .contollers import (
+    encurtar_url,
+    redirecionar_usuario,
+    analise_acessos
+)
+
+from .core.schema import NewUrl
 
 api = APIRouter(
-    tags=["encurtador de link"],
+    tags=["links"],
 )
 
 @api.get("/{id}")
-def get_redirect_url(id:str):
-    url = "https://www.google.com"
-
-    return RedirectResponse(url, status_code=302)
+async def get_redirect_url(id:str):
+    return redirecionar_usuario(id)
 
 @api.post("/")
-def create_new_link():
-
-    return {}
-
+async def create_new_link(url:NewUrl):
+    return encurtar_url(url)
 
 
 @api.get("/analitc/<id>")
-def analitic(id):
+async def analitic(id):
+    return analise_acessos(id)
 
-    return {}
